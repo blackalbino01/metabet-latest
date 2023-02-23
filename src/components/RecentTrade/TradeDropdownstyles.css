@@ -1,0 +1,415 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "CabinetGroteskBold";
+}
+
+
+.Amount span {
+  font-size: 13px;
+  color: #969696;
+}
+
+.pool {
+  display: flex;
+  align-items: center;
+  max-width: 300px;
+  min-height: 65px;
+  background: #0a1a25;
+  border-radius: 10px;
+  padding: 0px 10px;
+  grid-gap: 12px;
+}
+
+.pool>.Status {
+  display: flex;
+  align-items: center;
+  grid-gap: 10px;
+}
+
+.pool input {
+  font-size: 15px;
+  color: #ffffff;
+  width: 70px;
+  background: #0a1a25;
+  border: none;
+}
+
+#betAmount {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+}
+
+.pool span {
+  font-size: 13px;
+  color: #969696;
+}
+
+.odds {
+  display: flex;
+  align-items: center;
+  max-width: 127px;
+  min-height: 65px;
+  background: #0a1a25;
+  border-radius: 10px;
+  padding: 0px 20px;
+  grid-gap: 42px;
+}
+
+.odds .Status {
+  display: flex;
+  align-items: center;
+  grid-gap: 10px;
+}
+
+.odds input {
+  font-size: 15px;
+  color: #ffffff;
+  width: 70px;
+  background: #0a1a25;
+  border: none;
+}
+
+.odds span {
+  font-size: 13px;
+  color: #969696;
+}
+
+.win {
+  display: flex;
+  align-items: center;
+  max-width: 210px;
+  min-height: 65px;
+  background: #0a1a25;
+  border-radius: 10px;
+  padding: 0px 20px;
+  grid-gap: 21px;
+}
+
+.win>.Status {
+  display: flex;
+  align-items: center;
+  grid-gap: 10px;
+}
+
+.win input {
+  font-size: 15px;
+  color: #ffffff;
+  width: 70px;
+  background: #0a1a25;
+  border: none;
+}
+
+.win span {
+  font-size: 13px;
+  color: #969696;
+}
+
+.dropdown-Content-stats4 {
+  padding: 16px;
+  background: #1b2c38;
+  box-shadow: 3px 3px 10px 6px rgb(0 0 0 / 6%);
+  font-weight: 500;
+  color: #333;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-gap: 20px;
+  max-width: 900px;
+  border-radius: 10px;
+}
+
+.payments-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.payments-inputs>.openai {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0px 25px;
+}
+
+
+
+.payments-inputs>.openai>span {
+  font-size: 10px;
+  color: #ffffff;
+}
+
+.payments-inputs>.verdict-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+
+}
+
+.payments-inputs>.verdict-btn>button {
+  font-size: 12px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  width: 125px;
+  height: 36px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+}
+
+.title-text>span {
+  font-size: 13px;
+  color: #DADADA;
+  text-align: center;
+}
+
+.title-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding-top: 15px;
+
+}
+
+#grey {
+  color: #6E8799;
+}
+
+#green {
+  background: #11A94E;
+}
+
+#red {
+  background: #E04545;
+}
+
+
+@media screen and (max-width: 768px) {
+  .Amount {
+    gap: 0px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .Amount {
+    max-width: 90.57px;
+    min-height: 23.4px;
+    padding: 0px 8px;
+    grid-gap: 30px;
+    border-radius: 3.56287px;
+  }
+
+  .odds {
+    max-width: 45.47px;
+    min-height: 23.4px;
+    padding: 0px 8px;
+    grid-gap: 20px;
+    border-radius: 3.56287px;
+  }
+
+  .pool {
+    max-width: 107.4px;
+    min-height: 23.4px;
+    inline-size: max-content;
+    padding: 0px 8px;
+    grid-gap: 30px;
+    border-radius: 3.56287px;
+  }
+
+  .win {
+    max-width: 75.18px;
+    min-height: 23.4px;
+    inline-size: max-content;
+    padding: 0px 8px;
+    grid-gap: 10px;
+    border-radius: 3.56287px;
+  }
+
+  .ctn>.pool span {
+    font-weight: 500;
+    font-size: 4.63174px;
+    line-height: 140%;
+  }
+
+  .ctn>.Amount span {
+    font-weight: 500;
+    font-size: 4.63174px;
+    line-height: 140%;
+  }
+
+  .ctn>.odds span {
+    font-weight: 500;
+    font-size: 4.63174px;
+    line-height: 140%;
+  }
+
+  .ctn>.win span {
+    font-weight: 500;
+    font-size: 4.63174px;
+    line-height: 140%;
+  }
+
+  .ctn>.pool input {
+    font-size: 4.63174px;
+    width: 20px;
+  }
+
+  .ctn>.odds input {
+    font-size: 4.63174px;
+    width: 15px;
+  }
+
+  .ctn>.Amount input {
+    font-size: 4.63174px;
+    width: 20px;
+  }
+
+  .ctn>.win input {
+    font-size: 4.63174px;
+    width: 15px;
+  }
+
+  .pool>.Status {
+    grid-gap: 5px;
+  }
+
+  .Status>img {
+    width: 7.13px;
+    height: 7.13px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .dropdown-Content-stats4 {
+    padding: 5px 2px;
+    background: #1b2c38;
+    box-shadow: 3px 3px 10px 6px rgb(0 0 0 / 6%);
+    font-weight: 500;
+    color: #333;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-gap: 10px;
+    max-width: 358px;
+    border-radius: 0px;
+  }
+
+  .dropdown-Content-stats4>#btn {
+    width: 130px;
+    height: 14px;
+    border-radius: 2.13772px;
+    font-size: 4.98802px;
+  }
+}
+
+#BET-BTN {
+  width: 130px;
+  height: 14px;
+  border-radius: 2.13772px;
+}
+
+.ctn {
+  display: flex;
+  grid-gap: 2px;
+}
+
+.dropdown .dropdownBtn>#Btn {
+  width: 150px;
+  height: 21px;
+  background: #fc4c1e;
+  border-radius: 6px;
+  color: #ffffff;
+  border: none;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Bet {
+  display: flex;
+  z-index: 1;
+  align-items: center;
+  background: none;
+}
+
+.Bet p {
+  font-family: "CabinetGroteskBold";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  justify-content: center;
+  background: none;
+  text-transform: none;
+}
+
+.Player>span {
+  font-family: "CabinetGroteskBold";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  justify-content: center;
+  background: none;
+  padding-top: 82px;
+}
+
+.Player {
+  background: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-VS {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 50px;
+  transform: translateY(20px);
+}
+
+.Values {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+}
+
+.Values>ul {
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+  flex-direction: column;
+  grid-gap: 10px;
+  text-transform: none;
+}
+
+.Values>ul>li {
+  display: flex;
+  color: #ffffff;
+}
+
+.Values>ul>a {
+  text-decoration-line: underline;
+  color: #4e95ff;
+}
