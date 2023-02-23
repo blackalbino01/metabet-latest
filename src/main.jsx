@@ -19,6 +19,7 @@ import BITCOIN from "./components/BitcoinPrice/Bitcoin";
 import ETHEREUM from "./components/Ethereum/Ethereum";
 
 import FOOTBALL from "./components/LandingPage/landingPage";
+
 import CIRCKET from "./components/CricketBanners/CricketLandingPage";
 import UFC from "./pages/UFC";
 import POLITICS from "./pages/Polities";
@@ -44,6 +45,15 @@ import StatsComponent from "./components/Statistics/StatsComponent";
 import DXYPage from "./pages/DXYPage";
 import Truth2earn from "./components/Truth2earn/Truth2earn";
 import TRUSCToken from "./components/TRUSCToken/TRUSCToken";
+
+import REGFOOTBALL from "./pages/RegFootball";
+// Leagues //
+import CHAMPIONSLEAGUE from "./components/FootballLeagues/ChampionsLeague";
+import LIGUE1 from "./components/FootballLeagues/Ligue1";
+import LALIGA from "./components/FootballLeagues/Laliga";
+import PREMIERLEAGUE from "./components/FootballLeagues/PremierLeague";
+import SERIEA from "./components/FootballLeagues/SerieA";
+import BUNDESLIGA from "./components/FootballLeagues/Bundesliga";
 
 let persistor = persistStore(store);
 const router = createBrowserRouter([
@@ -89,7 +99,37 @@ const router = createBrowserRouter([
       },
       {
         path: "/football",
-        element: <FOOTBALL />,
+        element: <REGFOOTBALL />,
+        children: [
+          {
+            path: "champions-league",
+            element: <CHAMPIONSLEAGUE group_type="champions-league" />,
+          },
+          {
+            path: "ligue-1",
+            element: <LIGUE1 group_type="ligue-1" />,
+          },
+          {
+            path: "laliga",
+            element: <LALIGA group_type="laliga" />,
+          },
+          {
+            path: "premier-league",
+            element: <PREMIERLEAGUE group_type="premier-league" />,
+          },
+          {
+            path: "serie-a",
+            element: <SERIEA group_type="serie-a" />,
+          },
+          {
+            path: "bundesliga",
+            element: <BUNDESLIGA group_type="bundesliga" />,
+          },
+        ],
+      },
+      {
+        path: ":group/:title/stats/:id",
+        element: <StatsComponent />,
       },
       {
         path: "/cricket",

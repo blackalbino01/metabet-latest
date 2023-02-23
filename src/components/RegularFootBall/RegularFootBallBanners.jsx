@@ -5,7 +5,7 @@ import { RegularFootBallContainer } from "./RegularFoot.style";
 const RegularFootBallBanners = (props) => {
   return (
     <>
-      <NavLink to={{ pathname: props.route_path, state: props.innerData }}>
+      <NavLink to={props.route_path}>
         <RegularFootBallContainer
           background={props.background_img}
         ></RegularFootBallContainer>

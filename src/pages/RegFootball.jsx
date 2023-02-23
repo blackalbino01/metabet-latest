@@ -1,36 +1,49 @@
-import React, { useEffect } from "react";
-import { getBannersData } from "../api/API";
+import React from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import RegularFootBallBanners from "../Components/RegularFootBall/RegularFootBallBanners";
-import { useAxios } from "../hooks/useAxios";
+import { footBallMainBanners } from "../JasonData/football";
 
 const RegFootball = () => {
-  const { fetchData, response } = useAxios();
+  const location = useLocation();
+  const { pathname } = location;
 
-  const getBanners = async () => {
-    await fetchData({
-      method: "GET",
-      url: `${getBannersData}?q=football`,
-    });
-  };
+  const p_1 = "/football/champions-league";
+  const p_2 = "/football/ligue-1";
+  const p_3 = "/football/laliga";
+  const p_4 = "/football/premier-league";
+  const p_5 = "/football/serie-a";
+  const p_6 = "/football/bundesliga";
 
-  useEffect(() => {
-    getBanners();
-  }, []);
-
-  const result = response?.map((item) => console.log(item.eventBanner));
-  console.log("football", result);
   return (
     <>
-      {response?.map((item, index) => {
-        return (
-          <RegularFootBallBanners
-            key={index}
-            background_img={item.eventBanner}
-            route_path={item.route_path}
-            innerData={item.innerData}
-          />
-        );
-      })}
+      {location.pathname === !pathname ? (
+        footBallMainBanners?.map((item, index) => {
+          return (
+            <RegularFootBallBanners
+              key={index}
+              background_img={item?.backgroundImg}
+              route_path={item.route_path}
+            />
+          );
+        })
+      ) : location.pathname === p_1 ||
+        location.pathname === p_2 ||
+        location.pathname === p_3 ||
+        location.pathname === p_4 ||
+        location.pathname === p_5 ||
+        location.pathname === p_6 ? (
+        <Outlet />
+      ) : (
+        footBallMainBanners?.map((item, index) => {
+          return (
+            <RegularFootBallBanners
+              key={index}
+              background_img={item?.backgroundImg}
+              route_path={item.route_path}
+            />
+          );
+        })
+      )}
     </>
   );
 };

@@ -69,7 +69,7 @@ export const sec_array = [
   },
   {
     display_name: "Football",
-    route: "/Football",
+    route: "/football",
     icon: PL,
     white: FootballW,
   },

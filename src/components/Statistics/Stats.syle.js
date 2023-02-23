@@ -27,7 +27,7 @@ export const StatisticsContainer = styled.div`
         color: #ffffff;
       }
       img {
-        width: 149px;
+        width: 70px;
       }
     }
 

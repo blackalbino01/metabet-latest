@@ -1,0 +1,33 @@
+.Tabs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    grid-gap: 20px;
+  
+  }
+  
+  .tableHead>p {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 140%;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  
+  .Active {
+    background: #7b7b7b;
+        border-radius: 100px;
+    padding: 10px;
+  }
+  
+  .tabsList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0F212E;
+    border-radius: 100px;
+    Width: 247px;
+    Height: 48px;
+    grid-gap: 15px;
+  }

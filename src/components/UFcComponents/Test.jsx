@@ -7,7 +7,7 @@ import HightLightsComponent from "../HighLights/HightLightsComponent";
 const Test = () => {
   let { group, title } = useParams();
 
-  console.log(title, "title");
+  console.log(title, group, "title");
 
   const updatedTitle = title.replace(/-/g, " ");
 
@@ -16,7 +16,7 @@ const Test = () => {
   const getBanners = async () => {
     await fetchData({
       method: "GET",
-      url: `http://localhost:5002/getGroup/${group}/${updatedTitle}`,
+      url: `http://localhost:5002/getGroup/${group}/${title}`,
     });
   };
 
@@ -24,6 +24,8 @@ const Test = () => {
     getBanners();
     window.scrollTo(0, 0);
   }, [group, title]);
+
+  console.log("test", response);
 
   return (
     <>

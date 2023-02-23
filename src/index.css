@@ -12,6 +12,15 @@ body {
   overflow-x: hidden;
 }
 
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
 .slick-slider {
   width: 100%;
   max-width: 900px;
@@ -19,11 +28,10 @@ body {
   bottom: 25px;
 }
 
-.slide_img>img {
+.slide_img > img {
   width: 100%;
   max-width: 300px;
 }
-
 
 @media screen and (max-width: 1280px) {
   .slick-slider {
@@ -66,7 +74,6 @@ body {
     max-width: 450px;
   }
 }
-
 
 @media screen and (max-width: 414px) {
   .slick-slider {
@@ -143,7 +150,7 @@ input:focus {
   display: flex;
 }
 
-.accordion-wrapper+* {
+.accordion-wrapper + * {
   margin-top: 0.5em;
 }
 
