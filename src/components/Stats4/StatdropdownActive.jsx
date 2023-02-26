@@ -29,8 +29,10 @@ function Dropdown({ id, token, img, amount, pool, odd, size, win, betWinId }) {
     });
   }
 
-  const multiplier = total / (teamT + Number(enterAmount));
+  const multiplier = (Number(enterAmount) + total) / (teamT + Number(enterAmount));
   const payout = multiplier * Number(enterAmount);
+  console.log("Multiplier",multiplier);
+  console.log("Payout",payout);
   const BetNow = async (_id, _token, _amount, userResult) => {
     try {
       const { ethereum } = window;
@@ -44,7 +46,7 @@ function Dropdown({ id, token, img, amount, pool, odd, size, win, betWinId }) {
         const mumbaiid = "0x13881";
         const polygon = "0x89";
         const bsc = "0x38";
-        if (_token === METABET_ADDRESS) {
+        if (_token === "") {
           if (chainId !== polygon) {
             alert("You are not connected to the Polygon Network!");
             return;
@@ -75,8 +77,8 @@ function Dropdown({ id, token, img, amount, pool, odd, size, win, betWinId }) {
             return;
           }
         }
-        if (chainId !== bsc) {
-          alert("You are not connected to the bsc Network!");
+        if (chainId !== testnetChainId) {
+          alert("You are not connected to the bsc Test Network!");
           return;
         } else {
           const provider = new ethers.providers.Web3Provider(ethereum);
