@@ -46,7 +46,7 @@ const DXYComponent = () => {
   ];
 
   const id =
-    "0x294220fa75e41651782e351551183231fff9deba6bd76820bd93d92f9382481a";
+    "0x4b43224ffcdcbddc685a0f12b255f3565e6baa07451b9ba2900b0efe03ce6c60";
   return (
     <>
       <PoliticsContainer>

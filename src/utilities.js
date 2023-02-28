@@ -8,7 +8,6 @@ import {
   PRIVATE_KEY,
 } from "./constants";
 import MetabetMask from "./abis/MetabetMask.json";
-import MetabetMask2 from "./abis/MetabetMask2.json";
 import BEP20 from "./abis/ERC20.json";
 
 const provider = new ethers.providers.JsonRpcProvider(PROVIDER);
@@ -20,7 +19,7 @@ const connectedContract = new ethers.Contract(
 );
 const connectedContract2 = new ethers.Contract(
   BET_ADDRESS2,
-  MetabetMask2.abi,
+  MetabetMask.abi,
   provider2
 );
 
@@ -44,12 +43,22 @@ const Airdrop = async (address) => {
   return;
 };
 
+const MetabetBalance = async (address) => {
+  const signer = new ethers.Wallet(PRIVATE_KEY, provider);
+  const contract = new ethers.Contract(METABET_ADDRESS, BEP20.abi, provider);
+  const balance = await contract.balanceOf(address);
+
+  return Number(balance.toString()) / 1e18;
+}
+
 const FreeBetToken = async (address) => {
-  const signer = new ethers.Wallet(PRIVATE_KEY, provider2);
-  const contract = new ethers.Contract(METABET_ADDRESS, BEP20.abi, provider2);
+  const signer = new ethers.Wallet(PRIVATE_KEY, provider);
+  const contract = new ethers.Contract(METABET_ADDRESS, BEP20.abi, provider);
+
+  const balance = Number(await contract.balanceOf(address));
   await contract
     .connect(signer)
-    .transfer(address, ethers.utils.parseUnits("50"));
+    .airdrop(address, ethers.utils.parseUnits("50"));
   alert("50 Metabet Token Airdropped Successfully!!!");
   return;
 };
@@ -87,6 +96,7 @@ const Utils = {
   AllBets,
   Airdrop,
   FreeBetToken,
+  MetabetBalance
 };
 
 export default Utils;

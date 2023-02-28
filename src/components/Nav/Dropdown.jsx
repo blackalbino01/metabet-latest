@@ -16,11 +16,13 @@ import {
 
 import useBreakpoint from "../../hooks/useBreakpoints";
 import truncateEthAddress from "truncate-eth-address";
+import Utils from "../../utilities";
 
 function Dropdown() {
   const [Active, setIsActive] = useState(false);
   const metaMaskAddress = useSelector((state) => state.wallet);
   const dispatch = useDispatch();
+  const [balance, setBalance] = useState(null);
   const { isSmallMobile, isMobile, isTablet, isDesktop } = useBreakpoint();
 
   // const Address =
@@ -32,6 +34,13 @@ function Dropdown() {
     metaMaskAddress.metaMaskAddress === null || undefined
       ? "0.0000"
       : truncateEthAddress(metaMaskAddress.metaMaskAddress.toString());
+
+    if(metaMaskAddress.metaMaskAddress){
+      Utils.MetabetBalance(metaMaskAddress.metaMaskAddress.toString()).then(function (data) {
+        data === 0 ? setBalance(null) : setBalance(data);
+        console.log(data);
+      });
+    }
 
   useEffect(() => {
     // console.log(metaMaskAddress, "metaMaskAddress");
@@ -50,7 +59,7 @@ function Dropdown() {
           </div>
           <div className="right-nav">
             <label>
-              <input type="text" name="name" placeholder="5" />
+              <input type="text" name="name" placeholder= {balance == null ? "0.00" : balance}  />
               <img src={foxCircle} alt="foxCircle" />
             </label>
             <label id="label-nav">

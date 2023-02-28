@@ -2,9 +2,8 @@ import "../RecentTrade/TradedropdownActive";
 import { ethers } from "ethers";
 import { useDispatch, useSelector } from "react-redux";
 import { metaMaskConnection } from "../../redux/walletConnect/walletConnectSlice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MetabetMask from "../../abis/MetabetMask.json";
-import MetabetMask2 from "../../abis/MetabetMask2.json";
 import BEP20 from "../../abis/ERC20.json";
 import {
   BET_ADDRESS,
@@ -14,14 +13,16 @@ import {
 } from "../../constants";
 import Utils from "../../utilities";
 
-function Dropdown({ id, token, img, amount, pool, odd, size, win, betWinId }) {
+function Dropdown({ id, token, img, amount,name, win, betWinId }) {
   const metaMaskAddress = useSelector((state) => state.wallet);
   const dispatch = useDispatch();
   const [enterAmount, setEnterAmount] = useState(0);
   const [teamT, setTeamT] = useState(0);
+  const [Data_size, setDataSize] = useState(null);
+  const [Data_total, setDataTotal] = useState(null);
 
   // console.log("Bet Amount", betWinId);
-  const total = Number(enterAmount) + Number(pool);
+  const total = Number(enterAmount) + Number(Data_total);
 
   if (betWinId !== "") {
     Utils.EventOdd(id, betWinId, token).then(function (data) {
@@ -29,7 +30,20 @@ function Dropdown({ id, token, img, amount, pool, odd, size, win, betWinId }) {
     });
   }
 
-  const multiplier = (Number(enterAmount) + total) / (teamT + Number(enterAmount));
+  const details = () => {
+    Utils.PoolSize(id, token).then(function (data) {
+      setDataSize(data);
+    });
+    Utils.PoolTotal(id, token).then(function (data) {
+      setDataTotal((data / 1e18).toFixed(2));
+    });
+  };
+
+  useEffect(() => {
+    details();
+  }, []);
+
+  const multiplier = total / (teamT + Number(enterAmount));
   const payout = multiplier * Number(enterAmount);
   console.log("Multiplier",multiplier);
   console.log("Payout",payout);
@@ -43,17 +57,16 @@ function Dropdown({ id, token, img, amount, pool, odd, size, win, betWinId }) {
 
         // String, hex code of the chainId of the bsc test network
         const testnetChainId = "0x61";
-        const mumbaiid = "0x13881";
+        const goerli = "0x5";
         const polygon = "0x89";
         const bsc = "0x38";
         if (_token === "") {
-          if (chainId !== polygon) {
-            alert("You are not connected to the Polygon Network!");
+          if (chainId !== goerli) {
+            alert("You are not connected to the Goerli Network!");
             return;
           } else {
             const provider = new ethers.providers.Web3Provider(ethereum);
             const signer = provider.getSigner();
-            const tokenContract = new ethers.Contract(token, BEP20.abi, signer);
             const connectedContract = new ethers.Contract(
               BET_ADDRESS2,
               MetabetMask2.abi,
@@ -110,7 +123,7 @@ function Dropdown({ id, token, img, amount, pool, odd, size, win, betWinId }) {
           console.log(await signer.getAddress());
           Txn = await connectedContract.bet(
             _id,
-            _token,
+            name,
             ethers.utils.parseUnits(_amount),
             userResult
           );
@@ -149,7 +162,7 @@ function Dropdown({ id, token, img, amount, pool, odd, size, win, betWinId }) {
               <img src={img} alt="img" />
             </div>
           </div>
-          <input type="text" placeholder={pool} disabled />
+          <input type="text" placeholder={Data_total} disabled />
         </label>
         <label>
           <div className="status_3">
@@ -157,14 +170,18 @@ function Dropdown({ id, token, img, amount, pool, odd, size, win, betWinId }) {
               <img src={img} alt="img" />
             </div>
           </div>
-          <input type="text" placeholder={pool} disabled />
+          <input type="text" placeholder={Data_size} disabled />
         </label>
         <label>
           <div className="status_4">
             <div>
               <img src={img} alt="img" />
             </div>
-            <input type="text" placeholder={odd} disabled />
+            <input type="text" 
+            placeholder={
+              multiplier.toFixed(2) === "NaN" ? "0.000" : multiplier.toFixed(2)} 
+              disabled 
+            />
           </div>
         </label>
         <label>
