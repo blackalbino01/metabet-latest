@@ -45,7 +45,7 @@ function Dropdown({ id, token, img, amount,name, win, betWinId }) {
 
   const multiplier = total / (teamT + Number(enterAmount));
   const payout = multiplier * Number(enterAmount);
-  console.log("Multiplier",multiplier);
+  console.log("Multiplier",isFinite(multiplier));
   console.log("Payout",payout);
   const BetNow = async (_id, _token, _amount, userResult) => {
     try {
@@ -178,8 +178,7 @@ function Dropdown({ id, token, img, amount,name, win, betWinId }) {
               <img src={img} alt="img" />
             </div>
             <input type="text" 
-            placeholder={
-              multiplier.toFixed(2) === "NaN" ? "0.000" : multiplier.toFixed(2)} 
+            placeholder={ isFinite(multiplier) ? multiplier.toFixed(2) : "0.00"} 
               disabled 
             />
           </div>
