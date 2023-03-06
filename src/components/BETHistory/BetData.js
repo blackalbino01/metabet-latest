@@ -10,11 +10,13 @@ import poland from "../../assets/images/WorldcupBanner/poland-mini.webp";
 import ChainLink from "../../assets/images/Betimg/chainlink.png";
 import senegal from "../../assets/images/WorldcupBanner/senegal-mini.webp";
 import england from "../../assets/images/WorldcupBanner/england-mini.webp";
+import {ZERO_ADDRESS, METABET_ADDRESS} from "../../constants.js";
 
 export const betData = [
   {
     id: 1,
     icon1: BUSD,
+    addr: "",
     th_1: "Ticker",
     th_2: "Total Bets",
     th_3: "Bets Won",
@@ -34,6 +36,7 @@ export const betData = [
   {
     id: 2,
     icon1: BNB,
+    addr: ZERO_ADDRESS,
     th_1: "Ticker",
     th_2: "Total Bets",
     th_3: "Bets Won",
@@ -52,6 +55,7 @@ export const betData = [
   {
     id: 3,
     icon1: GOAL,
+    addr: "",
     th_1: "Ticker",
     th_2: "Total Bets",
     th_3: "Bets Won",
@@ -70,6 +74,7 @@ export const betData = [
   {
     id: 4,
     icon1: USDT,
+    addr: "",
     th_1: "Ticker",
     th_2: "Total Bets",
     th_3: "Bets Won",
@@ -89,6 +94,7 @@ export const betData = [
   {
     id: 5,
     icon1: ETH,
+    addr: "",
     th_1: "Ticker",
     th_2: "Total Bets",
     th_3: "Bets Won",
@@ -107,6 +113,7 @@ export const betData = [
   {
     id: 6,
     icon1: metabet,
+    addr: METABET_ADDRESS,
     th_1: "Ticker",
     th_2: "Total Bets",
     th_3: "Bets Won",

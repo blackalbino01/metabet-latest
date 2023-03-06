@@ -1,9 +1,9 @@
 import React from "react";
-import { useState } from "react";
 import { Container } from "./BETHistory.styles";
 import BetContainer from "./BetContainer";
 import fox from "../../assets/images/Betimg/fox.png";
 import { Filter } from "../ActiveBet/ActiveBetData";
+
 
 const BetHistory = () => {
   return (

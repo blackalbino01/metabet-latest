@@ -37,6 +37,8 @@ const Airdrop = async (address) => {
   const contract = new ethers.Contract(METABET_ADDRESS, BEP20.abi, provider);
 
   const balance = Number(await contract.balanceOf(address));
+
+  if(balance > 0){console.log("not eligible for airdrop"); return}
   await contract
     .connect(signer)
     .airdrop(address, ethers.utils.parseUnits("50"));
@@ -89,14 +91,33 @@ const AllBets = async (id) => {
   return Txn;
 };
 
+
+const AllUserBets = async (user) => {
+  const Txn = await connectedContract.getAllUserBets(user);
+  return Txn;
+};
+
+const getTotalReturned = async (user, token) => {
+  const Txn = await connectedContract.getTotalReturned(user, token);
+  return Txn;
+};
+
+const userStatus = async (user, id) => {
+  const Txn = await connectedContract.userPredictStatus(user, [id]);
+  return Txn;
+};
+
 const Utils = {
   EventOdd,
   PoolSize,
   PoolTotal,
   AllBets,
   Airdrop,
+  AllUserBets,
   FreeBetToken,
-  MetabetBalance
+  MetabetBalance,
+  getTotalReturned,
+  userStatus
 };
 
 export default Utils;
