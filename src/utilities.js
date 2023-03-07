@@ -32,6 +32,15 @@ const EventOdd = async (id, win, token) => {
   return Number(Txn.toString());
 };
 
+const currentOdd = async (id, win, token) => {
+  if (token === "") {
+    const Txn = await connectedContract2.getOdds(win, token, id);
+    return Number(Txn.toString());
+  }
+  const Txn = await connectedContract.getOdds(win, token, id);
+  return Number(Txn.toString());
+};
+
 const Airdrop = async (address) => {
   const signer = new ethers.Wallet(PRIVATE_KEY, provider);
   const contract = new ethers.Contract(METABET_ADDRESS, BEP20.abi, provider);
